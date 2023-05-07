@@ -1,6 +1,7 @@
 // 載入express
 const express = require('express')
 const exphbs = require('express-handlebars')
+const bodyParser = require('body-parser')
 // 載入 mongoose
 const mongoose = require('mongoose')
 
@@ -21,6 +22,7 @@ require('./config/mongoose')
 // 宣告 PORT
 const PORT = process.env.PORT
 
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(routes)
 
 // 設定監聽運行訊息

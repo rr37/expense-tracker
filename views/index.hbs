@@ -1,16 +1,21 @@
-<!-- search bar -->
+{{!-- <!-- search bar -->
 <div class="container search-bar">
   <div class="search-bar-outer">
     <div class="search-bar-inner">
     </div>
   </div>
-</div>
+</div> --}}
 
-<!-- restaurant list -->
-<div class="container mt-5">
-  <div class="row">
+<!-- records list -->
+<div class="mt-5">
     {{#if recordData}}
     <div class="col-md-6 col-12 mx-auto">
+      <a href="/records/new" style="text-decoration: none">
+        <div class="d-grid gap-2">
+          <button class="btn btn-light mb-3" type="button">新增帳目</button>
+        </div>
+      </a>
+
       <table class="table">
         <thead>
           <tr>
@@ -43,5 +48,4 @@
       <h6>「真像一塊塊綠豆糕。」一位外號叫「大食客」的同學緊接著說。</h6>
     </div>
     {{/if}}
-  </div>
 </div>
