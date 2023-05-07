@@ -15,15 +15,13 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
 
+const routes = require('./routes')
 require('./config/mongoose')
 
 // 宣告 PORT
 const PORT = process.env.PORT
 
-// 設定路由
-app.get('/', (req, res) => {
-  res.render('index')
-})
+app.use(routes)
 
 // 設定監聽運行訊息
 app.listen(PORT, () => {

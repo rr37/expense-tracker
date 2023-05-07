@@ -1,1 +1,47 @@
-<h2>Hello world! 這是我做的酷東東</h2>
+<!-- search bar -->
+<div class="container search-bar">
+  <div class="search-bar-outer">
+    <div class="search-bar-inner">
+    </div>
+  </div>
+</div>
+
+<!-- restaurant list -->
+<div class="container mt-5">
+  <div class="row">
+    {{#if recordData}}
+    <div class="col-md-6 col-12 mx-auto">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">name</th>
+            <th scope="col">date</th>
+            <th scope="col">amount</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each recordData}}
+          <tr>
+            <th scope="row"><i class="fa-solid fa-house h7"></i></th>
+            <td>{{this.name}}</td>
+            <td>{{this.date}}</td>
+            <td>{{this.amount}}</td>
+            <td>修改</td>
+            <td>刪除</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{!-- 找不到結果時顯示如下 --}}
+    {{else}}
+    <div class="d-flex justify-content-end flex-column align-items-center m-3">
+      <h3 class="mb-3">我們搜遍了資料庫的每寸角落，也找不到包含「{{keywords}}」關鍵字的餐廳</h3>
+      <h6>「真像一塊塊綠豆糕。」一位外號叫「大食客」的同學緊接著說。</h6>
+    </div>
+    {{/if}}
+  </div>
+</div>
