@@ -1,6 +1,8 @@
 // 載入express
 const express = require('express')
 const exphbs = require('express-handlebars')
+// 載入 mongoose
+const mongoose = require('mongoose')
 
 // 建構應用程式伺服器
 const app = express()
@@ -14,6 +16,21 @@ if (process.env.NODE_ENV !== 'production') {
 }
 // 宣告 PORT
 const PORT = process.env.PORT
+
+
+// 資料庫設定
+// 設定連線到 mongoDB
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+// 取得資料庫連線狀態
+const db = mongoose.connection
+// 連線異常
+db.on('error', () => {
+  console.log('mongodb error!')
+})
+// 連線成功
+db.once('open', () => {
+  console.log('mongodb connected!')
+})
 
 // 設定路由
 app.get('/', (req, res) => {

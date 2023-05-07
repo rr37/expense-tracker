@@ -2,7 +2,7 @@
   "name": "expense-tracker",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
@@ -13,7 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
-    "express-handlebars": "^4.0.2"
+    "express-handlebars": "^4.0.2",
+    "mongoose": "^5.9.7"
   },
   "devDependencies": {
     "dotenv": "^16.0.3"
