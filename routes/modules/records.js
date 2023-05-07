@@ -27,5 +27,12 @@ router.put('/:id', (req, res) => {
     .catch(error => console.log(error))
 })
 
+router.delete('/:id', (req, res) => {
+  const _id = req.params.id
+  return Record.findByIdAndDelete({ _id })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
 // 匯出路由器
 module.exports = router

@@ -8,52 +8,62 @@
 
 <!-- records list -->
 <div class="mt-5">
-    {{#if recordData}}
-    <div class="col-md-6 col-12 mx-auto">
-      <a href="/records/new" style="text-decoration: none">
-        <div class="d-grid gap-2">
-          <button class="btn btn-light mb-3" type="button">新增帳目</button>
-        </div>
-      </a>
+  {{#if recordData}}
+  <div class="col-md-6 col-12 mx-auto">
+    <a href="/records/new" style="text-decoration: none">
+      <div class="d-grid gap-2">
+        <button class="btn btn-light mb-3" type="button">新增帳目</button>
+      </div>
+    </a>
 
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">name</th>
-            <th scope="col">date</th>
-            <th scope="col">amount</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each recordData}}
-          <tr>
-            <th scope="row"><i class="fa-solid fa-house h7"></i></th>
-            <td>{{this.name}}</td>
-            <td>{{this.date}}</td>
-            <td>{{this.amount}}</td>
-            <td>
-              <a class="me-2" 
-              href="/records/{{this._id}}/edit" 
-              style="text-decoration: none ; color:#000" 
-              onmouseover='this.style.textDecoration="underline"' 
-              onmouseout='this.style.textDecoration="none"'>
-                修改
-              </a>
-            </td>
-            <td>刪除</td>
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
-    </div>
-    {{!-- 找不到結果時顯示如下 --}}
-    {{else}}
-    <div class="d-flex justify-content-end flex-column align-items-center m-3">
-      <h3 class="mb-3">我們搜遍了資料庫的每寸角落，也找不到包含「{{keywords}}」關鍵字的餐廳</h3>
-      <h6>「真像一塊塊綠豆糕。」一位外號叫「大食客」的同學緊接著說。</h6>
-    </div>
-    {{/if}}
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">name</th>
+          <th scope="col">date</th>
+          <th scope="col">amount</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each recordData}}
+        <tr>
+          <th scope="row"><i class="fa-solid fa-house h7"></i></th>
+          <td>{{this.name}}</td>
+          <td>{{this.date}}</td>
+          <td>{{this.amount}}</td>
+          <td>
+            <a class="me-2" href="/records/{{this._id}}/edit"   
+              style="text-decoration: none ; color:#000"
+              onmouseover='this.style.textDecoration="underline"' onmouseout='this.style.textDecoration="none"'>
+              修改
+            </a>
+          </td>
+          <td>
+            <form action="/records/{{this._id}}?_method=DELETE" method="POST">
+              <button 
+                class="me-2 p-0"
+                type="submit" 
+                style="text-decoration: none ; color:#000 outline: none;
+                      background: transparent;border: 1px solid transparent;"
+                onmouseover='this.style.textDecoration="underline"' onmouseout='this.style.textDecoration="none"'>
+                刪除
+              </button>
+            </form>
+
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  {{!-- 找不到結果時顯示如下 --}}
+  {{else}}
+  <div class="d-flex justify-content-end flex-column align-items-center m-3">
+    <h3 class="mb-3">我們搜遍了資料庫的每寸角落，也找不到包含「{{keywords}}」關鍵字的餐廳</h3>
+    <h6>「真像一塊塊綠豆糕。」一位外號叫「大食客」的同學緊接著說。</h6>
+  </div>
+  {{/if}}
 </div>
