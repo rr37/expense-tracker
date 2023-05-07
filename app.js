@@ -2,6 +2,7 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 // 載入 mongoose
 const mongoose = require('mongoose')
 
@@ -23,6 +24,7 @@ require('./config/mongoose')
 const PORT = process.env.PORT
 
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
 app.use(routes)
 
 // 設定監聽運行訊息

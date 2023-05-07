@@ -12,5 +12,20 @@ router.post('/', (req, res) => {
     .catch(err => console.log(err))
 })
 
+router.get('/:id/edit', (req, res) => {
+  const _id = req.params.id
+  return Record.findOne({ _id })
+    .lean()
+    .then((record) => res.render('edit', { record }))
+    .catch(error => console.log(error))
+})
+
+router.put('/:id', (req, res) => {
+  const _id = req.params.id
+  return Record.findByIdAndUpdate(_id, req.body)
+    .then(() => res.redirect(`/`))
+    .catch(error => console.log(error))
+})
+
 // 匯出路由器
 module.exports = router
