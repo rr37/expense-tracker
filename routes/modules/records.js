@@ -3,6 +3,7 @@ const router = express.Router()
 const Record = require('../../models/Record')
 const formateDate = require('../../utility/formateDate')
 
+
 router.get('/new', (req, res) => {
   res.render('new')
 })
