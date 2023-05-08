@@ -1,1 +1,22 @@
-<h2>Login</h2>
+<div class="container mt-5">
+  <div class="col-md-6 col-12 mx-auto">
+    <h1 class="mb-4">Login</h1>
+    <form action="/users/login" method="POST">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+        <input type="email" class="form-control" id="email" name="email"  placeholder="Enter Email" required />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required />
+      </div>
+      <div class="d-grid gap-2 mt-3" style="text-decoration: none">
+        <button class="btn btn-light mt-3" type="submit">Login</button>
+      </div>
+  <p class="lead mt-4">
+    No Account ? &nbsp &nbsp<a href="/users/register">Register</a>
+  </p>
+  </div>
+  </form>
+</div>
+</div>
