@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Record = require('../../models/Record')
+const formateDate = require('../../utility/formateDate')
 
 router.get('/new', (req, res) => {
   res.render('new')
@@ -16,7 +17,10 @@ router.get('/:id/edit', (req, res) => {
   const _id = req.params.id
   return Record.findOne({ _id })
     .lean()
-    .then((record) => res.render('edit', { record }))
+    .then(async (record) => {
+      [record] = await formateDate([record])
+      res.render('edit', {record})
+    })
     .catch(error => console.log(error))
 })
 
