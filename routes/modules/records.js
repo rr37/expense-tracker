@@ -30,11 +30,7 @@ router.get('/:id/edit', (req, res) => {
       const matchCate = categoryData.find(data => {
         return record.categoryId.toString() === data._id.toString()
       })
-      console.log(matchCate.name)
-      
       record.categoryName = matchCate.name
-      console.log(record.categoryName)
-      console.log(record)
       res.render('edit', {record})
     })
     .catch(error => console.log(error))

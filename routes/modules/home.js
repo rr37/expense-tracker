@@ -19,7 +19,6 @@ router.get('/', async (req, res) => {
         })
         record.iconLink = matchCate.icon
         record.categoryName = matchCate.name
-        console.log(record)
       })
       recordData = await turnUrlToFontAwesomeClass(recordData)
       recordData = await formateDate(recordData)
