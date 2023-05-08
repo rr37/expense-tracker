@@ -26,13 +26,27 @@ router.get('/:id/edit', (req, res) => {
     .lean()
     .then(async (record) => {
       [record] = await formateDate([record])
+      const categoryData = await Category.find({})
+      const matchCate = categoryData.find(data => {
+        return record.categoryId.toString() === data._id.toString()
+      })
+      console.log(matchCate.name)
+      
+      record.categoryName = matchCate.name
+      console.log(record.categoryName)
+      console.log(record)
       res.render('edit', {record})
     })
     .catch(error => console.log(error))
 })
 
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
   const _id = req.params.id
+  const categoryData = await Category.find({})
+  const category = categoryData.find(data => {
+    return req.body.category === data.name
+  })
+  req.body.categoryId = category._id
   return Record.findByIdAndUpdate(_id, req.body)
     .then(() => res.redirect(`/`))
     .catch(error => console.log(error))
