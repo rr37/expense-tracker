@@ -48,13 +48,35 @@
                 onmouseover='this.style.textDecoration="underline"' onmouseout='this.style.textDecoration="none"'>
                 修改
               </a>
-              <button class=" p-0" type="submit" style="text-decoration: none ; color:#000 outline: none;
-                                  background: transparent;border: 1px solid transparent;"
-                onmouseover='this.style.textDecoration="underline"' onmouseout='this.style.textDecoration="none"'>
+              <button class="p-0" type="button" style="text-decoration: none ; color:#000; outline: none; background: transparent;border: 1px solid transparent;"
+                onmouseover='this.style.textDecoration="underline"' onmouseout='this.style.textDecoration="none"' data-bs-toggle="modal" data-bs-target="#Modal{{this._id}}">
                 刪除
               </button>
             </form>
           </td>
+          {{!-- delete double-check modal --}}
+          <div class="modal fade" id="Modal{{this._id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Are you Sure you want to delete {{this.name}} ?</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <i class="{{this.fontAwesomeClass}} h7" title="{{this.categoryName}}"></i>
+                  <div>name: {{this.name}}</div>
+                  <div>date: {{this.date}}</div>
+                  <div>amount: {{this.amount}}</div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <form action="/records/{{this._id}}?_method=DELETE" method="POST">
+                    <button type="submit" class="btn btn-danger">Delete anyway</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </tr>
         {{/each}}
       </tbody>
