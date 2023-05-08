@@ -1,0 +1,23 @@
+{
+  "results": [
+    {
+      "name": "Joseph Joestar",
+      "email": "user1@example.com",
+      "password": "12345678",
+      "owned_record_id": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "Giorno Giovanna",
+      "email": "user2@example.com",
+      "password": "12345678",
+      "owned_record_id": [
+        4,
+        5
+      ]
+    }
+  ]
+}
