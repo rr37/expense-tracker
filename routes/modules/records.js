@@ -10,19 +10,21 @@ router.get('/new', (req, res) => {
 })
 
 router.post('/', async(req, res) => {
+  const userId = req.user._id
   const categoryData = await Category.find({})
   const category = categoryData.find(data => {
     return req.body.category === data.name
   })
   req.body.categoryId = category._id
-  return Record.create({ ...req.body})
+  return Record.create({ ...req.body, userId })
     .then(() => res.redirect('/'))
     .catch(err => console.log(err))
 })
 
 router.get('/:id/edit', (req, res) => {
+  const userId = req.user._id
   const _id = req.params.id
-  return Record.findOne({ _id })
+  return Record.findOne({ _id, userId })
     .lean()
     .then(async (record) => {
       [record] = await formateDate([record])
@@ -37,20 +39,22 @@ router.get('/:id/edit', (req, res) => {
 })
 
 router.put('/:id', async (req, res) => {
+  const userId = req.user._id
   const _id = req.params.id
   const categoryData = await Category.find({})
   const category = categoryData.find(data => {
     return req.body.category === data.name
   })
   req.body.categoryId = category._id
-  return Record.findByIdAndUpdate(_id, req.body)
+  return Record.findByIdAndUpdate(_id, req.body, userId)
     .then(() => res.redirect(`/`))
     .catch(error => console.log(error))
 })
 
 router.delete('/:id', (req, res) => {
+  const userId = req.user._id
   const _id = req.params.id
-  return Record.findByIdAndDelete({ _id })
+  return Record.findByIdAndDelete({ _id, userId })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })

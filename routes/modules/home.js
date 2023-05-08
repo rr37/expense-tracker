@@ -8,8 +8,9 @@ const turnUrlToFontAwesomeClass = require('../../utility/turnUrlToFontAwesomeCla
 
 // 定義首頁路由
 router.get('/', async (req, res) => {
+  const userId = req.user._id 
   const categoryData = await Category.find({})
-  Record.find()
+  Record.find({ userId })
     .lean()
     .then(async(recordData) => {
       // recordData 的 cateId 等於 Category 資料的話，回傳Category的link
