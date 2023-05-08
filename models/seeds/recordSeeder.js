@@ -14,7 +14,7 @@ db.once('open', async() => {
   // console.log(categoryData)
   recordList.forEach((record) => {
     const category = categoryData.find(data => {
-      return data.name === record.category
+      return record.category === data.name
     })
     record.categoryId = category._id
     // console.log(record)

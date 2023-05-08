@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Record = require('../../models/Record')
+const Category = require('../../models/Category.js')
 const formateDate = require('../../utility/formateDate')
 
 
@@ -8,7 +9,12 @@ router.get('/new', (req, res) => {
   res.render('new')
 })
 
-router.post('/', (req, res) => {
+router.post('/', async(req, res) => {
+  const categoryData = await Category.find({})
+  const category = categoryData.find(data => {
+    return req.body.category === data.name
+  })
+  req.body.categoryId = category._id
   return Record.create({ ...req.body})
     .then(() => res.redirect('/'))
     .catch(err => console.log(err))
