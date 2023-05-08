@@ -1,24 +1,24 @@
 <div class="container mt-5">
   <div class="col-md-6 col-12 mx-auto">
     <h1 class="mb-4">Register</h1>
+    {{> message}}
     <form action="/users/register" method="POST">
       <div class="mb-3">
         <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" value="{{ name }}" required />
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" value="{{ name }}" />
       </div>
       <div class="mb-3">
         <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
-        <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" value="{{ email }}" required />
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" value="{{ email }}" />
       </div>
       <div class="mb-3">
         <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
-        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" value="{{ password }}"
-          required />
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" value="{{ password }}"/>
       </div>
       <div class="mb-3">
         <label for="confirmPassword" class="form-label">Confirm Password <span class="text-danger">*</span></label>
         <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
-          placeholder="Enter confirmPassword" value="{{ confirmPassword }}" required />
+          placeholder="Enter confirmPassword" value="{{ confirmPassword }}" />
       </div>
       <div class="d-grid gap-2 mt-3" style="text-decoration: none">
         <button class="btn btn-light mt-3" type="submit">Register</button>
