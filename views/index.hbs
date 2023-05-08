@@ -12,8 +12,8 @@
   {{#if recordData}}
   <div class="col-md-6 col-8 mx-auto">
     <div class="d-flex justify-content-between align-items-baseline">
-    <h5 class="fw-bold">total</h5>
-    <div class="" style="font-size: 12vw;">{{total}}</div>
+      <h5 class="fw-bold">total</h5>
+      <div class="" style="font-size: 12vw;">{{total}}</div>
     </div>
 
   </div>
@@ -30,9 +30,9 @@
           <th scope="col">#</th>
           <th scope="col">name</th>
           <th scope="col">date</th>
-          <th scope="col">amount</th>
-          <th scope="col"></th>
-          <th scope="col"></th>
+          <th scope="col" class="text-end">amount</th>
+          <th scope="col" class="text-center" colspan="2">function</th>
+          {{!-- <th scope="col"></th> --}}
         </tr>
       </thead>
       <tbody>
@@ -41,22 +41,19 @@
           <th scope="row"><i class="{{this.fontAwesomeClass}} h7" title="{{this.categoryName}}"></i></th>
           <td>{{this.name}}</td>
           <td>{{this.date}}</td>
-          <td>{{this.amount}}</td>
-          <td>
-            <a class="me-2" href="/records/{{this._id}}/edit" style="text-decoration: none ; color:#000"
-              onmouseover='this.style.textDecoration="underline"' onmouseout='this.style.textDecoration="none"'>
-              修改
-            </a>
-          </td>
-          <td>
+          <td class="text-end">{{this.amount}}</td>
+          <td colspan="2" class="text-center">
             <form action="/records/{{this._id}}?_method=DELETE" method="POST">
-              <button class="me-2 p-0" type="submit" style="text-decoration: none ; color:#000 outline: none;
-                      background: transparent;border: 1px solid transparent;"
+              <a class="" href="/records/{{this._id}}/edit" style="text-decoration: none ; color:#000"
+                onmouseover='this.style.textDecoration="underline"' onmouseout='this.style.textDecoration="none"'>
+                修改
+              </a>
+              <button class=" p-0" type="submit" style="text-decoration: none ; color:#000 outline: none;
+                                  background: transparent;border: 1px solid transparent;"
                 onmouseover='this.style.textDecoration="underline"' onmouseout='this.style.textDecoration="none"'>
                 刪除
               </button>
             </form>
-
           </td>
         </tr>
         {{/each}}
