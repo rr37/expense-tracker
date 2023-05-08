@@ -26,7 +26,7 @@ require('./config/mongoose')
 // 宣告 PORT
 const PORT = process.env.PORT
 app.use(session({
-  secret: 'ThisIsMySecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
