@@ -36,10 +36,32 @@
             返回首頁
           </button>
         </a>
-        <button type="reset" class="btn btn-light">
-          重新輸入
+        <button type="reset" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#Modal{{record._id}}">
+          刪除
         </button>
       </div>
     </form>
+  </div>
+  {{!-- delete double-check modal --}}
+  <div class="modal fade" id="Modal{{record._id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Are you Sure you want to delete {{record.name}} ?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <i class="{{record.fontAwesomeClass}} h7" title="{{record.categoryName}}"></i>
+          <div>name: {{record.name}}</div>
+          <div>date: {{record.date}}</div>
+          <div>amount: {{record.amount}}</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <form action="/records/{{record._id}}?_method=DELETE" method="POST">
+            <button type="submit" class="btn btn-danger">Delete anyway</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
