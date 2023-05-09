@@ -3,6 +3,8 @@ const express = require('express')
 const session = require('express-session')
 const usePassport = require('./config/passport')
 const exphbs = require('express-handlebars')
+const hbshelpers = require('handlebars-helpers')()
+// const multihelpers = hbshelpers();
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
@@ -12,7 +14,7 @@ const mongoose = require('mongoose')
 // 建構應用程式伺服器
 const app = express()
 
-app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
+app.engine('hbs', exphbs({ helpers: hbshelpers, defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
 // 加入這段 code, 僅在非正式環境時, 使用 dotenv
