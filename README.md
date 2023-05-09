@@ -86,8 +86,21 @@
 8.當Terminal顯示以下訊息，代表伺服器已成功運行
 
   ```
-  Express is listening on localhost: 3000
+  App is running on http://localhost:3000
   ```
+
+9.使用種子資料裡的測試帳號進行測試
+
+``` bash
+# 測試帳號一
+email: user1@example.com
+password: 12345678
+
+# 測試帳號二
+email: user2@example.com
+password: 12345678
+```
+
 
 9.若欲暫停使用
 
