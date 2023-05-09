@@ -14,7 +14,6 @@ db.once('open', async () => {
   console.log('running recordSeeder script...')
   const categoryData = await Category.find({})
   console.log('category data found.')
-  // console.log(categoryData)
   try {
     for (const seed_user of userList) {
       // 建立用戶前，以 email 先查找該用戶是否已存在
@@ -50,17 +49,3 @@ db.once('open', async () => {
     console.error(err);
   }
 })
-
-  // recordList.forEach((record) => {
-  //   const category = categoryData.find(data => {
-  //     return record.category === data.name
-  //   })
-  //   record.categoryId = category._id
-  //   // console.log(record)
-  // })
-  // Record.create(recordList)
-  //   .then(() => {
-  //     console.log('recordSeeder done!')
-  //     db.close()
-  //   })
-  //   .catch(err => console.log(err))

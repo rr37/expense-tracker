@@ -1,11 +1,11 @@
 
 const sumAmount = (records) => {
-  let total = 0
+  let totalAmount = 0
   for (let record in records) {
-    total += records[record].amount
+    totalAmount += records[record].amount
   }
 
-  return total
+  return totalAmount
 
 }
 

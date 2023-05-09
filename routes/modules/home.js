@@ -57,34 +57,5 @@ router.get('/filter', async (req, res) => {
   }
 })
 
-// router.get('/filter', async (req, res) => {
-//   const userId = req.user._id
-//   try {
-//     await Promise.all(
-//       Record.find({ userId }).lean().map(async(recordData) => {
-//         const category = req.query.category
-//         const categoryData = await Category.find({}).lean()
-//         await recordData.map(async(record) => {
-//           const matchCate = await categoryData.find(data => {
-//             return data._id.toString() === category
-//           })
-//           record.iconLink = matchCate.icon
-//           record.categoryName = matchCate.name
-//           console.log('down', record)
-//         })
-//       })
-//     )
-//     await turnUrlToFontAwesomeClass(recordData)
-//     await formateDate(recordData)
-//     const totalAmount = sumAmount(recordData)
-//     console.log('downdown', recordData)
-//     // res.render('index')
-//     res.render('index', { recordData, totalAmount })
-//   } catch (err) {
-//     console.log(err)
-//   }
-// })
-
-
 // 匯出路由器
 module.exports = router
